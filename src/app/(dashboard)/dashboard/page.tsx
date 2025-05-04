@@ -27,7 +27,7 @@ export default async function DashboardPage() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 glass-headline">
-          {user ? `Welcome ${user?.firstName || &apos;back&apos;} YUV.AI` : 'Welcome to YUV.AI Boilerplate - Fly High With YUV.AI'}
+          {user ? `Welcome ${user?.firstName || &apos;back&apos;}! Fly High With YUV.AI` : 'Welcome to YUV.AI Boilerplate - Fly High With YUV.AI'}
         </h1>
         <p className="text-gray-500 dark:text-gray-400">Your personal dashboard at YUV.AI Boilerplate</p>
       </div>
