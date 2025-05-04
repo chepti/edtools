@@ -1,24 +1,22 @@
 import { randomBytes } from 'crypto';
 import { cookies } from 'next/headers';
 
-export function generateCSRFToken(): string {
+export async function generateCSRFToken(): Promise<string> {
   const token = randomBytes(32).toString('hex');
-  cookies().set('csrf-token', token, {
+  const cookieStore = await cookies();
+  cookieStore.set('csrf-token', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     path: '/',
-    maxAge: 3600, // 1 hour
   });
   return token;
 }
 
-export function validateCSRFToken(token: string): boolean {
-  const storedToken = cookies().get('csrf-token')?.value;
-  if (!storedToken || storedToken !== token) {
-    return false;
-  }
-  return true;
+export async function validateCSRFToken(token: string): Promise<boolean> {
+  const cookieStore = await cookies();
+  const storedToken = cookieStore.get('csrf-token')?.value;
+  return storedToken === token;
 }
 
 // Client-side functions to work with CSRF tokens
