@@ -27,7 +27,6 @@ export default async function DashboardPage() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 glass-headline">
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
           {user ? `Welcome ${user?.firstName || 'back'}! Fly High With YUV.AI` : 'Welcome to YUV.AI Boilerplate - Fly High With YUV.AI'}
         </h1>
         <p className="text-gray-500 dark:text-gray-400">Your personal dashboard at YUV.AI Boilerplate</p>
@@ -48,7 +47,7 @@ export default async function DashboardPage() {
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-purple-600" /> <span className="glass-headline">Features</span>
             </CardTitle>
-            <CardDescription>What's included in this boilerplate</CardDescription>
+            <CardDescription>What&apos;s included in this boilerplate</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 space-y-1 text-sm">
