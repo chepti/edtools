@@ -1,7 +1,7 @@
 // This is a standalone script to test MongoDB connection
 // Run with: node -r dotenv/config src/scripts/test-mongodb.js
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 async function testConnection() {
   const uri = process.env.MONGODB_URI;
