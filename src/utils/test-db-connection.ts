@@ -30,11 +30,15 @@ export async function testMongoDbConnection() {
         }
       };
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    let errorMessage = 'An unknown error occurred';
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
     return {
       success: false,
       message: 'Failed to connect to MongoDB',
-      error: error.message
+      error: errorMessage
     };
   }
 } 
