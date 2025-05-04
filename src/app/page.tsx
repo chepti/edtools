@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowLeft, Search, Star, GraduationCap, Users, Palette, ShieldCheck, MessageSquareQuote, Sparkles } from 'lucide-react';
+import { ArrowLeft, Search, Star, GraduationCap, Palette, ShieldCheck, MessageSquareQuote } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
           גלו, דרגו ולמדו כיצד לשלב כלי בינה מלאכותית מתקדמים בהוראה היומיומית שלכם.
           <br />
-          פלטפורמה שיתופית למורים ואנשי חינוך מבית "חולמים תקשוב".
+          פלטפורמה שיתופית למורים ואנשי חינוך מבית &quot;חולמים תקשוב&quot;.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
