@@ -5,7 +5,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import { AccessibilityControls } from "@/components/layout/AccessibilityControls";
 import { Toaster } from "sonner";
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "מרכז כלי AI להוראה - חולמים תקשוב",
