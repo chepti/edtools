@@ -8,11 +8,11 @@ import { Toaster } from "sonner";
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "Next.js Boilerplate by YUV.AI",
-  description: "A modern Next.js boilerplate with MongoDB, Clerk, Tailwind CSS, and shadcn/ui",
-  authors: [{ name: "Yuval Avidani", url: "https://linktr.ee/yuvai" }],
-  keywords: ["Next.js", "React", "Tailwind CSS", "MongoDB", "Clerk", "YUV.AI"],
-  creator: "YUV.AI",
+  title: "מרכז כלי AI להוראה - חולמים תקשוב",
+  description: "פלטפורמה לאיתור, דירוג ולמידה על כלי בינה מלאכותית למורים ואנשי חינוך.",
+  authors: [{ name: "חולמים תקשוב - חפציה בן ארצי", url: "mailto:chepti@gmail.com" }],
+  keywords: ["בינה מלאכותית", "AI", "חינוך", "הוראה", "מורים", "כלים דיגיטליים", "תקשוב"],
+  creator: "חולמים תקשוב",
 };
 
 export default function RootLayout({
@@ -22,13 +22,13 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en" className="light" suppressHydrationWarning>
+      <html lang="he" dir="rtl" className="light" suppressHydrationWarning>
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet" />
         </head>
-        <body className="outfit-app min-h-screen bg-background antialiased transition-colors">
+        <body className="assistant-app min-h-screen bg-background antialiased transition-colors">
           <AccessibilityProvider>
             <Navbar />
             <main className="min-h-[calc(100vh-4rem)] container mx-auto px-4">
@@ -37,50 +37,21 @@ export default function RootLayout({
             <footer className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
               <div className="flex flex-col items-center justify-center space-y-4">
                 <div className="flex items-center space-x-2">
-                  <a 
-                    href="https://linktr.ee/yuvai" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block h-16 w-16 overflow-hidden rounded-full border-2 border-purple-500"
-                  >
-                    <Image
-                      src="/images/yuval-profile.jpg" 
-                      alt="Yuval Avidani" 
-                      className="h-full w-full object-cover"
-                      width={64}
-                      height={64}
-                    />
-                  </a>
                   <div>
                     <p>
-                      Built by{' '}
+                      נבנה באהבה על ידי{' '}
                       <a 
-                        href="https://linktr.ee/yuvai" 
+                        href="mailto:chepti@gmail.com" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="underline hover:text-purple-600 transition-colors"
+                        className="underline hover:text-blue-600 transition-colors"
                       >
-                        Yuval Avidani
+                        חולמים תקשוב - חפציה בן ארצי
                       </a> 
-                      {' '}- AI Builder & Speaker
                     </p>
-                    <p className="mt-1">Fly High With YUV.AI</p>
+                    <p className="mt-1">מרכז כלי AI להוראה</p>
                   </div>
                 </div>
-                <a 
-                  href="https://yuv.ai" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block w-24"
-                >
-                  <Image
-                    src="/images/phoenix-logo.png" 
-                    alt="YUV.AI Phoenix Logo" 
-                    className="w-full"
-                    width={96}
-                    height={32}
-                  />
-                </a>
               </div>
             </footer>
             <AccessibilityControls />

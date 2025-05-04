@@ -29,10 +29,10 @@ export function Navbar() {
     <>
       {/* Animated Banner */}
       <div className="animated-banner w-full text-center relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 text-white font-medium">
+        <div dir="rtl" className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 text-white font-medium">
           <Sparkles className="h-4 w-4" />
           <p className="text-sm">
-            {isSignedIn ? `Welcome ${user?.firstName || 'back'}! Fly High With YUV.AI` : 'Welcome to YUV.AI Boilerplate - Fly High With YUV.AI'}
+            {isSignedIn ? `ברוך הבא ${user?.firstName || 'למרכז'}!` : 'מרכז כלי AI להוראה'}
           </p>
           <Sparkles className="h-4 w-4" />
         </div>
@@ -43,9 +43,9 @@ export function Navbar() {
           <div className="flex justify-between h-16">
             <div className="flex">
               <Link href="/" className="flex-shrink-0 flex items-center">
-                <span className="text-xl font-bold glass-headline">YUV.AI</span>
+                <span className="text-xl font-bold glass-headline">חולמים תקשוב</span>
               </Link>
-              <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
+              <div className="hidden lg:mr-6 lg:flex lg:space-x-reverse lg:space-x-8">
                 <Link
                   href="/"
                   className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
@@ -54,7 +54,7 @@ export function Navbar() {
                       : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
                   }`}
                 >
-                  Home
+                  ראשי
                 </Link>
                 <Link
                   href="/dashboard"
@@ -64,16 +64,15 @@ export function Navbar() {
                       : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
                   }`}
                 >
-                  Dashboard
+                  לוח בקרה
                 </Link>
               </div>
             </div>
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 {isSignedIn ? (
-                  <div className="flex items-center space-x-4">
-                    {/* ThemeToggle on desktop */}
-                    <div className="hidden lg:block mr-4">
+                  <div className="flex items-center space-x-4 space-x-reverse">
+                    <div className="hidden lg:block ml-4">
                       <CustomErrorBoundary>
                         <ThemeToggle />
                       </CustomErrorBoundary>
@@ -81,9 +80,8 @@ export function Navbar() {
                     <UserButton afterSignOutUrl="/" />
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-4">
-                    {/* ThemeToggle on desktop */}
-                    <div className="hidden lg:block mr-4">
+                  <div className="flex items-center space-x-4 space-x-reverse">
+                    <div className="hidden lg:block ml-4">
                       <CustomErrorBoundary>
                         <ThemeToggle />
                       </CustomErrorBoundary>
@@ -92,26 +90,25 @@ export function Navbar() {
                       href="/sign-in"
                       className="text-sm font-medium text-primary hover:text-primary/80 glass-shimmer"
                     >
-                      Sign in
+                      התחברות
                     </Link>
                     <Link
                       href="/sign-up"
-                      className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 glass-shimmer"
+                      className="mr-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 glass-shimmer"
                     >
-                      Sign up
+                      הרשמה
                     </Link>
                   </div>
                 )}
-                {/* Mobile menu button */}
                 <div className="flex items-center lg:hidden">
                   <CustomErrorBoundary>
                     <ThemeToggle />
                   </CustomErrorBoundary>
                   <button
                     type="button"
-                    className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                    className="mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                     aria-expanded="false"
-                    aria-label="toggle menu"
+                    aria-label="פתח תפריט"
                     onClick={toggleMobileMenu}
                   >
                     {isMobileMenuOpen ? (
@@ -128,27 +125,27 @@ export function Navbar() {
 
         {/* Mobile menu, show/hide based on menu state. */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden">
+          <div className="lg:hidden text-right">
             <div className="pt-2 pb-3 space-y-1">
               <Link
                 href="/"
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                className={`block pr-3 pl-4 py-2 border-r-4 text-base font-medium ${
                   pathname === '/'
                     ? 'bg-indigo-50 border-primary text-primary'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
                 }`}
               >
-                Home
+                ראשי
               </Link>
               <Link
                 href="/dashboard"
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                className={`block pr-3 pl-4 py-2 border-r-4 text-base font-medium ${
                   pathname === '/dashboard'
                     ? 'bg-indigo-50 border-primary text-primary'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
                 }`}
               >
-                Dashboard
+                לוח בקרה
               </Link>
             </div>
           </div>
