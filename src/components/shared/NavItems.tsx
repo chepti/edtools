@@ -8,7 +8,7 @@ const NavItems = () => {
         <Link href="/">בית</Link>
       </li>
       <li className="text-primary-500">
-        <Link href="/tools">כל הכלים</Link>
+        <Link href="/tools">כלי הכלים</Link>
       </li>
       {/* Add more links as needed */}
     </ul>
