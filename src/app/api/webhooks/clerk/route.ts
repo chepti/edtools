@@ -98,7 +98,7 @@ export async function POST(req: Request) {
 
     // Filter out undefined values to avoid overwriting with nothing
     const cleanUpdateData = Object.fromEntries(
-        Object.entries(userUpdate).filter(([_, v]) => v !== undefined)
+        Object.entries(userUpdate).filter(([_, v]) => v !== undefined) // Use _ to indicate unused key
     );
 
     // Only proceed if there's something to update

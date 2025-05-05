@@ -7,12 +7,19 @@ import Example from '@/models/Example';
 import Review from '@/models/Review';
 import Shelf from '@/models/Shelf';
 import Rating from '@/models/Rating';
-import User from '@/models/User'; // Needed for populating user info if required later
+// import User from '@/models/User'; // Removed unused import
 import { handleError } from '@/lib/utils';
-import { FilterQuery, Types } from 'mongoose';
+import { FilterQuery } from 'mongoose'; // Removed unused import: Types
 
-// Helper function to safely parse JSON
-const parseJSON = (data: any): any => JSON.parse(JSON.stringify(data));
+// Helper function to safely parse JSON - returns unknown
+const parseJSON = (data: unknown): unknown => {
+    try {
+        return JSON.parse(JSON.stringify(data));
+    } catch (error) {
+        console.error("Failed to parse JSON:", error);
+        return null; // Or throw an error, depending on desired behavior
+    }
+}
 
 // --- Define Serialized Type ---
 // Represents the structure after JSON serialization (ObjectId becomes string, Dates become strings)
@@ -72,8 +79,15 @@ export async function getAllTools({ query, tags, isFree, hebrewSupport, difficul
     const tools = await toolsQuery;
     const toolsCount = await Tool.countDocuments(conditions);
 
+    const parsedTools = parseJSON(tools);
+
+    // Check if parsing was successful before asserting type
+    if (!parsedTools) {
+        throw new Error("Failed to parse tools data");
+    }
+
     return {
-        data: parseJSON(tools) as SerializedTool[],
+        data: parsedTools as SerializedTool[], // Assert type after successful parsing
         totalPages: Math.ceil(toolsCount / limit),
     };
 
@@ -84,53 +98,44 @@ export async function getAllTools({ query, tags, isFree, hebrewSupport, difficul
 }
 
 // --- GET TOOL BY ID (including related data) ---
-export async function getToolById(toolId: string) {
-  try {
-    await connectToDatabase();
+export async function getToolById(toolId: string): Promise<any | null> { // Return type can be improved
+    try {
+        await connectToDatabase();
+        const tool = await Tool.findById(toolId);
+        if (!tool) throw new Error('Tool not found');
 
-    // Find the tool
-    const tool = await Tool.findById(toolId);
+        const [tutorials, examples, reviews, ratings, relatedShelves] = await Promise.all([
+            Tutorial.find({ toolId: tool._id }).sort({ createdAt: 'desc' }).lean(), // Use lean() for plain JS objects
+            Example.find({ toolId: tool._id }).sort({ createdAt: 'desc' }).lean(),
+            Review.find({ toolId: tool._id }).sort({ createdAt: 'desc' }).lean(),
+            Rating.find({ ratedItemId: tool._id, ratedItemType: 'Tool' }).lean(),
+            Shelf.find({ toolIds: tool._id }).select('_id name').limit(10).lean()
+        ]);
 
-    if (!tool) throw new Error('Tool not found');
+        let averageRating = 0;
+        if (ratings.length > 0) {
+          const totalScore = ratings.reduce((sum, rating) => sum + (rating.score || 0), 0); // Add default for score
+          averageRating = totalScore / ratings.length;
+        }
 
-    // Find related data concurrently
-    const [tutorials, examples, reviews, ratings] = await Promise.all([
-        Tutorial.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
-        Example.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
-        Review.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
-        Rating.find({ ratedItemId: tool._id, ratedItemType: 'Tool' })
-    ]);
+        // Combine data - lean() already gives plain objects, less need for deep parseJSON
+        const result = {
+            ...(tool.toObject()), // Still need toObject() for the main tool document
+            tutorials: tutorials, // Already plain objects from lean()
+            examples: examples,
+            reviews: reviews,
+            averageRating: averageRating.toFixed(1),
+            ratingsCount: ratings.length,
+            relatedShelves: relatedShelves
+        };
 
-    // Calculate average rating
-    let averageRating = 0;
-    if (ratings.length > 0) {
-      const totalScore = ratings.reduce((sum, rating) => sum + rating.score, 0);
-      averageRating = totalScore / ratings.length;
-    }
+        // Final parse to ensure top-level dates/ObjectId are strings
+        return parseJSON(result);
 
-    // Find shelves containing this tool
-    const relatedShelves = await Shelf.find({ toolIds: tool._id })
-                                    .select('_id name')
-                                    .limit(10);
-
-    // Prepare the final object - use parseJSON for consistency
-    const toolData = tool.toObject();
-    const result = {
-        ...toolData,
-        tutorials: parseJSON(tutorials),
-        examples: parseJSON(examples),
-        reviews: parseJSON(reviews),
-        averageRating: averageRating.toFixed(1),
-        ratingsCount: ratings.length,
-        relatedShelves: parseJSON(relatedShelves)
-    };
-    // Ensure the main tool part is also serialized correctly
-    return parseJSON(result); // Double parseJSON ensures dates/ObjectId are strings
-
-  } catch (error) {
-    handleError(error);
-    return null;
-  }
+      } catch (error) {
+        handleError(error);
+        return null;
+      }
 }
 
 // --- TODO: ADD ACTIONS FOR ADMINS (Create, Update, Delete Tools) ---

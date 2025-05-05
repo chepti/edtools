@@ -1,6 +1,6 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
+// import { revalidatePath } from 'next/cache'; // Removed unused import
 import { connectToDatabase } from '@/lib/mongodb';
 import User, { IUser } from '@/models/User';
 import { handleError } from '@/lib/utils'; // Assuming you have a handleError utility
@@ -46,7 +46,7 @@ export async function updateUser(clerkId: string, user: Partial<IUser>) {
 
     // Find user by Clerk ID (_id in our schema) and update
     // Ensure _id is not included in the update payload itself
-    const { _id, ...updateData } = user;
+    const { _id, ...updateData } = user; // _id is intentionally unused here
     const updatedUser = await User.findByIdAndUpdate(clerkId, updateData, { new: true });
 
     if (!updatedUser) throw new Error('User update failed');

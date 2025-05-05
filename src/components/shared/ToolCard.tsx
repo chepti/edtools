@@ -1,7 +1,6 @@
 import { SerializedTool } from '@/lib/actions/tool.actions';
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
 
 // Updated props to use SerializedTool
 type ToolCardProps = {
