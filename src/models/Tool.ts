@@ -1,5 +1,4 @@
-import mongoose, { Schema, Document, models, Model, Types } from 'mongoose';
-import { IUser } from './User'; // ייבוא IUser כדי לציין את סוג השדה של createdByAdmin
+import mongoose, { Schema, Document, models, Model } from 'mongoose';
 
 // רמות קושי אפשריות
 export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
