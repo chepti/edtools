@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getAllTools } from "@/lib/actions/tool.actions";
-import ToolCard from "@/components/shared/ToolCard"; // Assuming ToolCard component exists
-import { ITool } from "@/models/Tool"; // Import the ITool interface
+import { getAllTools, SerializedTool } from "@/lib/actions/tool.actions";
+import ToolCard from "@/components/shared/ToolCard";
 
 export default async function Home() {
   // Fetch initial tools to display on the homepage
   const result = await getAllTools({ limit: 6 }); // Get first 6 tools for example
-  const tools = result?.data || [];
+  const tools: SerializedTool[] = result?.data || [];
 
   return (
     <>
@@ -41,7 +40,7 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {tools.length > 0 ? (
-                tools.map((tool: ITool) => (
+                tools.map((tool) => (
                 <ToolCard key={tool._id} tool={tool} />
                 ))
             ) : (

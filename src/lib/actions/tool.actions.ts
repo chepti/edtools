@@ -12,7 +12,15 @@ import { handleError } from '@/lib/utils';
 import { FilterQuery, Types } from 'mongoose';
 
 // Helper function to safely parse JSON
-const parseJSON = (data: any) => JSON.parse(JSON.stringify(data));
+const parseJSON = (data: any): any => JSON.parse(JSON.stringify(data));
+
+// --- Define Serialized Type ---
+// Represents the structure after JSON serialization (ObjectId becomes string, Dates become strings)
+export type SerializedTool = Omit<ITool, '_id' | 'createdAt' | 'updatedAt'> & {
+    _id: string;
+    createdAt: string;
+    updatedAt: string;
+};
 
 // Interface for GetTools parameters
 interface GetToolsParams {
@@ -26,7 +34,7 @@ interface GetToolsParams {
 }
 
 // --- GET ALL TOOLS (with optional filtering and search) ---
-export async function getAllTools({ query, tags, isFree, hebrewSupport, difficultyLevel, limit = 12, page = 1 }: GetToolsParams) {
+export async function getAllTools({ query, tags, isFree, hebrewSupport, difficultyLevel, limit = 12, page = 1 }: GetToolsParams): Promise<{ data: SerializedTool[], totalPages: number }> {
   try {
     await connectToDatabase();
 
@@ -65,7 +73,7 @@ export async function getAllTools({ query, tags, isFree, hebrewSupport, difficul
     const toolsCount = await Tool.countDocuments(conditions);
 
     return {
-        data: parseJSON(tools),
+        data: parseJSON(tools) as SerializedTool[],
         totalPages: Math.ceil(toolsCount / limit),
     };
 
@@ -87,9 +95,9 @@ export async function getToolById(toolId: string) {
 
     // Find related data concurrently
     const [tutorials, examples, reviews, ratings] = await Promise.all([
-        Tutorial.find({ toolId: tool._id }).sort({ createdAt: 'desc' }), //.populate('userId', 'displayName profilePictureUrl'), // Optional: populate user details
-        Example.find({ toolId: tool._id }).sort({ createdAt: 'desc' }), //.populate('userId', 'displayName profilePictureUrl'),
-        Review.find({ toolId: tool._id }).sort({ createdAt: 'desc' }), //.populate('userId', 'displayName profilePictureUrl'),
+        Tutorial.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
+        Example.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
+        Review.find({ toolId: tool._id }).sort({ createdAt: 'desc' }),
         Rating.find({ ratedItemId: tool._id, ratedItemType: 'Tool' })
     ]);
 
@@ -102,18 +110,22 @@ export async function getToolById(toolId: string) {
 
     // Find shelves containing this tool
     const relatedShelves = await Shelf.find({ toolIds: tool._id })
-                                    .select('_id name') // Select only necessary fields
-                                    .limit(10); // Limit the number of related shelves shown
+                                    .select('_id name')
+                                    .limit(10);
 
-    return parseJSON({
-        ...tool.toObject(),
-        tutorials,
-        examples,
-        reviews,
-        averageRating: averageRating.toFixed(1), // Format to one decimal place
+    // Prepare the final object - use parseJSON for consistency
+    const toolData = tool.toObject();
+    const result = {
+        ...toolData,
+        tutorials: parseJSON(tutorials),
+        examples: parseJSON(examples),
+        reviews: parseJSON(reviews),
+        averageRating: averageRating.toFixed(1),
         ratingsCount: ratings.length,
-        relatedShelves
-    });
+        relatedShelves: parseJSON(relatedShelves)
+    };
+    // Ensure the main tool part is also serialized correctly
+    return parseJSON(result); // Double parseJSON ensures dates/ObjectId are strings
 
   } catch (error) {
     handleError(error);

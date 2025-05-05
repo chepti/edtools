@@ -1,11 +1,11 @@
-import { ITool } from '@/models/Tool';
+import { SerializedTool } from '@/lib/actions/tool.actions';
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 
-// Placeholder component for Tool Card
+// Updated props to use SerializedTool
 type ToolCardProps = {
-  tool: ITool;
+  tool: SerializedTool;
 }
 
 const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
