@@ -5,7 +5,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import { AccessibilityControls } from "@/components/layout/AccessibilityControls";
 import { Toaster } from "sonner";
-import Image from 'next/image';
 import { Mail, Link2, Youtube } from 'lucide-react';
 
 export const metadata: Metadata = {
