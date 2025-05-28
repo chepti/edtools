@@ -6,6 +6,7 @@ import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import { AccessibilityControls } from "@/components/layout/AccessibilityControls";
 import { Toaster } from "sonner";
 import Image from 'next/image';
+import { Mail, Link2, Youtube } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: "מאגר הכלים של חולמים תקשוב",
@@ -34,53 +35,56 @@ export default function RootLayout({
             <main className="min-h-[calc(100vh-4rem)] container mx-auto px-4">
               {children}
             </main>
-            <footer className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
-              <div className="flex flex-col items-center justify-center space-y-4">
-                <div className="flex items-center space-x-2">
-                  <a 
-                    href="https://linktr.ee/yuvai" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block h-16 w-16 overflow-hidden rounded-full border-2 border-purple-500"
-                  >
-                    <Image 
-                      src="/images/yuval-profile.jpg" 
-                      alt="Yuval Avidani" 
-                      width={64}
-                      height={64}
-                      className="h-full w-full object-cover"
-                    />
-                  </a>
+            <footer className="py-6 text-center text-sm text-gray-500 dark:text-gray-400 border-t">
+              <div className="container mx-auto px-4">
+                <div className="flex flex-col items-center justify-center space-y-4">
                   <div>
-                    <p>
-                      Built by{' '}
-                      <a 
-                        href="https://linktr.ee/yuvai" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="underline hover:text-purple-600 transition-colors"
-                      >
-                        Yuval Avidani
-                      </a> 
-                      {' '}- AI Builder & Speaker
+                    <p className="font-medium">
+                      פותח בגאווה על ידי חפציה בן ארצי
                     </p>
-                    <p className="mt-1">Fly High With YUV.AI</p>
+                    <p className="mt-1 font-bold text-blue-600 dark:text-blue-400">
+                      פרויקט חולמים תקשוב © {new Date().getFullYear()}
+                    </p>
+                    <div className="flex space-x-4 rtl:space-x-reverse mt-3 justify-center">
+                      <a 
+                        href="mailto:chepti@gmail.com" 
+                        className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                        aria-label="Email"
+                      >
+                        <Mail className="h-5 w-5" />
+                      </a>
+                      <a 
+                        href="https://tikshuv.chepti.com/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                        aria-label="אתר חולמים תקשוב"
+                      >
+                        <Link2 className="h-5 w-5" />
+                      </a>
+                      <a 
+                        href="https://linktr.ee/chepti" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-400 transition-colors"
+                        aria-label="Linktree"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
+                            <path d="M7.953 15.066c-.08.163-.08.324-.08.486 0 1.683 1.004 2.978 2.893 2.978 1.737 0 3.103-1.135 3.103-3.346V3.207h2.352v11.977c0 3.346-2.163 5.431-5.431 5.431-2.812 0-4.605-1.79-5.139-3.644l2.352-1.061v.156zm6.484-13.915h-2.351v.981h2.351v-.981zm-7.816.981v-.981H4.269v15.066c0 2.001 1.302 3.346 3.103 3.346v-1.818c-.684 0-1.171-.516-1.171-1.324V2.132h1.42z" />
+                        </svg>
+                      </a>
+                      <a 
+                        href="https://www.youtube.com/@chepti1" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
+                        aria-label="YouTube"
+                      >
+                        <Youtube className="h-5 w-5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <a 
-                  href="https://yuv.ai" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block w-24"
-                >
-                  <Image 
-                    src="/images/phoenix-logo.png" 
-                    alt="YUV.AI Phoenix Logo" 
-                    width={96}
-                    height={96}
-                    className="w-full"
-                  />
-                </a>
               </div>
             </footer>
             <AccessibilityControls />

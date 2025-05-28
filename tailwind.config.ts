@@ -18,7 +18,7 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        outfit: ["var(--font-outfit)"],
+        sans: ['Rubik', 'sans-serif'],
       },
       colors: {
         yuvai: {
