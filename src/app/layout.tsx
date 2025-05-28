@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { AccessibilityProvider } from "@/context/AccessibilityContext";
 import { AccessibilityControls } from "@/components/layout/AccessibilityControls";
 import { Toaster } from "sonner";
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "Next.js Boilerplate by YUV.AI",
@@ -42,9 +43,11 @@ export default function RootLayout({
                     rel="noopener noreferrer"
                     className="block h-16 w-16 overflow-hidden rounded-full border-2 border-purple-500"
                   >
-                    <img 
+                    <Image 
                       src="/images/yuval-profile.jpg" 
                       alt="Yuval Avidani" 
+                      width={64}
+                      height={64}
                       className="h-full w-full object-cover"
                     />
                   </a>
@@ -70,9 +73,11 @@ export default function RootLayout({
                   rel="noopener noreferrer"
                   className="block w-24"
                 >
-                  <img 
+                  <Image 
                     src="/images/phoenix-logo.png" 
                     alt="YUV.AI Phoenix Logo" 
+                    width={96}
+                    height={96}
                     className="w-full"
                   />
                 </a>
