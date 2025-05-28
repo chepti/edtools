@@ -67,7 +67,7 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 space-y-1 text-sm">
-              <li>צרו 'מדפים' אישיים</li>
+              <li>צרו מדפים אישיים</li>
               <li>הוסיפו כלים מועדפים למדפים</li>
               <li>שתפו מדפים עם עמיתים (בקרוב)</li>
               <li>גשו במהירות לכלים החשובים לכם</li>
