@@ -92,11 +92,37 @@ The goal is to create a comprehensive Next.js boilerplate with MongoDB, Clerk au
 
 ## Contact
 
-For questions or suggestions, please contact:
-
-Yuval Avidani  
-[https://linktr.ee/yuvai](https://linktr.ee/yuvai)
-
 ---
 
-*Last updated: May 26, 2023* | Fly High With YUV.AI 
+## Project Customization for "חולמים תקשוב" (Ongoing)
+
+This section tracks the customization of the YUV.AI boilerplate for Chepti Ben Artzi's "חולמים תקשוב" project - an AI tools database for educators.
+
+### Completed Customizations (Branding & Initial Setup):
+- Updated `README.md` with "חולמים תקשוב" project details, goals, and contact information.
+- Modified `package.json` postinstall script message.
+- Updated homepage (`src/app/page.tsx`): 
+  - Revised titles, descriptions, and feature lists (including new/adapted icons).
+  - Adjusted call-to-action, contact details, and primary color scheme (from purple to blue-yellow).
+- Updated dashboard page (`src/app/(dashboard)/dashboard/page.tsx`):
+  - Revised texts and card content (tool discovery, personal shelves, content contribution).
+  - Updated contact details and color scheme.
+- Updated `Navbar` (`src/components/layout/Navbar.tsx`):
+  - Modified top banner and site name to "חולמים תקשוב" (with blue-yellow text gradient).
+  - Translated navigation links to Hebrew (Homepage, Tools Repository, Personal Area).
+  - Integrated user-provided logo (`public/LOGO.PNG`).
+- Attempted to update global `Footer` (`src/app/layout.tsx` or `src/components/layout/Footer.tsx`) with Chepti Ben Artzi's credits and social links.
+- Resolved initial `MONGODB_URI` issues and various ESLint errors for Vercel deployment (including `no-unused-vars`, `no-unescaped-entities` by disabling the rule globally and then specific fixes).
+- Set global `dir="rtl"` in `src/app/layout.tsx` for right-to-left language support.
+- Updated global metadata (`title`, `description`, `keywords`, `author`, `creator`) in `src/app/layout.tsx`.
+- Initiated global font change from Outfit to Rubik (updated `tailwind.config.ts`, `globals.css`, and `layout.tsx` font links).
+
+### Next Steps / Outstanding Issues:
+- **Resolve Double Footer Issue:** Investigate and remove the duplicate footer appearing on pages.
+- **Verify and Enforce Rubik Font:** Ensure the Rubik font is correctly applied sitoewide and that no previous font (Outfit) styles are overriding it.
+- **Verify and Refine RTL Display:** Thoroughly check and correct right-to-left display issues across the entire site, focusing on the homepage, Navbar, forms, and other key components. Ensure proper text alignment, element ordering, and icon mirroring where necessary.
+- **UI/UX Refinements:** Address any remaining visual inconsistencies or areas needing design adjustments for a polished look and feel.
+- **(Future) Core Functionality Development:** 
+  - Implement features for the AI tools database (e.g., tool submission, categorization, search, filtering, user shelves).
+  - Design and develop UI for tool display and interaction.
+
