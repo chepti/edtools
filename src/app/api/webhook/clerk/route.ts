@@ -1,4 +1,3 @@
-import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 import { WebhookEvent } from '@clerk/nextjs/server';
 import { headers } from 'next/headers';
@@ -13,7 +12,7 @@ export async function POST(req: Request) {
   }
 
   // Get the headers
-  const headersList = headers();
+  const headersList = await headers();
   const svix_id = headersList.get('svix-id');
   const svix_timestamp = headersList.get('svix-timestamp');
   const svix_signature = headersList.get('svix-signature');
@@ -46,9 +45,6 @@ export async function POST(req: Request) {
 
   // Get the event type
   const eventType = evt.type;
-
-  // Connect to MongoDB
-  await connectToDatabase();
 
   // Handle user creation
   if (eventType === 'user.created') {

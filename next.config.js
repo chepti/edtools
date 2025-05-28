@@ -14,7 +14,7 @@ const nextConfig = {
     ],
   },
   // Enable SWC minification
-  swcMinify: true,
+  // swcMinify: true,
   compiler: {
     // Enables emotion for styled components
     emotion: false,

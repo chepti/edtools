@@ -10,9 +10,13 @@ export async function GET() {
     } else {
       return NextResponse.json(result, { status: 500 });
     }
-  } catch (error: any) {
+  } catch (error) {
+    let errorMessage = "An unknown error occurred";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
     return NextResponse.json(
-      { success: false, message: 'Failed to test connection', error: error.message },
+      { success: false, message: 'Failed to test connection', error: errorMessage },
       { status: 500 }
     );
   }

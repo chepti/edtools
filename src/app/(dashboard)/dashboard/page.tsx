@@ -45,7 +45,7 @@ export default async function DashboardPage() {
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-purple-600" /> <span className="glass-headline">Features</span>
             </CardTitle>
-            <CardDescription>What's included in this boilerplate</CardDescription>
+            <CardDescription>What&apos;s included in this boilerplate</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 space-y-1 text-sm">
