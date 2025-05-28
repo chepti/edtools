@@ -27,13 +27,13 @@ export default async function DashboardPage() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 glass-headline">ברוך הבא, {user.firstName || 'משתמש'}!</h1>
-        <p className="text-gray-500 dark:text-gray-400">לוח הבקרה האישי שלך ב"חולמים תקשוב"</p>
+        <p className="text-gray-500 dark:text-gray-400">לוח הבקרה האישי שלך בחולמים תקשוב</p>
       </div>
       
       {/* Welcome Alert */}
       <Alert className="mb-8 border-blue-200 bg-blue-50 dark:border-blue-900 dark:bg-blue-950/50 glass-shimmer">
         <ChevronsUp className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-        <AlertTitle className="glass-headline">ברוכים הבאים ל"חולמים תקשוב"!</AlertTitle>
+        <AlertTitle className="glass-headline">ברוכים הבאים לחולמים תקשוב!</AlertTitle>
         <AlertDescription>
           זהו אזור אישי למשתמשים רשומים. כאן תוכלו לנהל את הכלים שלכם, ליצור מדפים, לתרום תוכן ועוד.
         </AlertDescription>
