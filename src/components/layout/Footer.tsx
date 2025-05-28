@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+// import Link from 'next/link'; // Removed unused import
 import { Mail, Link2, Youtube } from 'lucide-react';
 
 const SocialLinkIcon = ({ type, className }: { type: string; className?: string }) => {

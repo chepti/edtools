@@ -2,7 +2,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { ChevronsUp, Mail, Github, MessagesSquare, ShieldCheck, Sparkles, BookOpen, Star, Lightbulb, Edit3, UserPlus, Search } from 'lucide-react';
+import { ChevronsUp, Mail, Sparkles, BookOpen, Lightbulb, Edit3, Search } from 'lucide-react';
 
 export default async function DashboardPage() {
   const user = await currentUser();

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Search, BookOpen, Users, Database, Star, Lightbulb, Edit3 } from 'lucide-react';
+import { ArrowRight, Search, BookOpen, Users, Star, Lightbulb, Edit3 } from 'lucide-react';
 import clientPromise from "@/lib/mongodb";
 
 export default async function Home() {
