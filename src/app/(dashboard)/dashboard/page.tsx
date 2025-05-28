@@ -61,7 +61,7 @@ export default async function DashboardPage() {
         <Card className="transform transition-all duration-300 hover:shadow-lg animate-slideInUp glass-shimmer" style={{ animationDelay: '0.2s' }}>
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-blue-600" /> <span className="glass-headline">המדפים שלי</span>
+              <BookOpen className="h-5 w-5 text-blue-600" /> <span className="glass-headline">{'המדפים שלי'}</span>
             </CardTitle>
             <CardDescription>ארגנו את הכלים שלכם באוספים</CardDescription>
           </CardHeader>
