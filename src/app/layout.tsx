@@ -8,11 +8,11 @@ import { Toaster } from "sonner";
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "Next.js Boilerplate by YUV.AI",
-  description: "A modern Next.js boilerplate with MongoDB, Clerk, Tailwind CSS, and shadcn/ui",
-  authors: [{ name: "Yuval Avidani", url: "https://linktr.ee/yuvai" }],
-  keywords: ["Next.js", "React", "Tailwind CSS", "MongoDB", "Clerk", "YUV.AI"],
-  creator: "YUV.AI",
+  title: "מאגר הכלים של חולמים תקשוב",
+  description: "מאגר כלי AI למורים, פרויקט חולמים תקשוב של חפציה בן ארצי",
+  authors: [{ name: "חפציה בן ארצי", url: "https://linktr.ee/chepti" }],
+  keywords: ["כלי AI", "מורים", "חינוך", "טכנולוגיה בחינוך", "חולמים תקשוב", "חפציה בן ארצי"],
+  creator: "חפציה בן ארצי",
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en" className="light" suppressHydrationWarning>
+      <html lang="he" className="light" suppressHydrationWarning dir="rtl">
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
