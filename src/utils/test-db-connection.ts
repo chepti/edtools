@@ -4,7 +4,7 @@ import clientPromise from '@/lib/mongodb';
  * Tests the MongoDB connection
  * @returns {Promise<{ success: boolean, message: string, details?: any, error?: string }>} The result of the connection test
  */
-export async function testMongoDbConnection(): Promise<{ success: boolean, message: string, details?: any, error?: string }> {
+export async function testMongoDbConnection(): Promise<{ success: boolean; message: string; details?: { host?: string | null }; error?: string }> {
   try {
     const client = await clientPromise;
     await client.db().admin().ping();
@@ -16,7 +16,7 @@ export async function testMongoDbConnection(): Promise<{ success: boolean, messa
         host: client.options.srvHost,
       }
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in testMongoDbConnection:", error);
     let errorMessage = "An unknown error occurred during DB connection test";
     if (error instanceof Error) {
