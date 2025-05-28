@@ -2,10 +2,11 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, BookOpen } from 'lucide-react';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -25,14 +26,20 @@ export function Navbar() {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
+  const navLinks = [
+    { href: "/", label: "דף הבית" },
+    { href: "/tools", label: "מאגר הכלים", icon: <BookOpen className="mr-1 h-4 w-4 inline-block" /> },
+    { href: "/dashboard", label: "אזור אישי" },
+  ];
+
   return (
     <>
-      {/* Animated Banner */}
-      <div className="animated-banner w-full text-center relative overflow-hidden">
+      {/* Animated Banner - Updated for Chepti */}
+      <div className="bg-gradient-to-r from-blue-500 via-sky-400 to-yellow-300 w-full text-center relative overflow-hidden py-2">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-2 text-white font-medium">
           <Sparkles className="h-4 w-4" />
           <p className="text-sm">
-            {isSignedIn ? `Welcome ${user?.firstName || 'back'}! Fly High With YUV.AI` : 'Welcome to YUV.AI Boilerplate - Fly High With YUV.AI'}
+            {isSignedIn ? `ברוך שובך, ${user?.firstName || 'משתמש'}! ברוכים הבאים ל"חולמים תקשוב"` : 'חולמים תקשוב: מאגר כלי AI למורים - בואו לגלות!'}
           </p>
           <Sparkles className="h-4 w-4" />
         </div>
@@ -43,36 +50,34 @@ export function Navbar() {
           <div className="flex justify-between h-16">
             <div className="flex">
               <Link href="/" className="flex-shrink-0 flex items-center">
-                <span className="text-xl font-bold glass-headline">YUV.AI</span>
+                <Image 
+                  src="/LOGO.PNG" 
+                  alt="חולמים תקשוב לוגו" 
+                  width={40}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </Link>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                <Link
-                  href="/"
-                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
-                    pathname === '/'
-                      ? 'border-primary text-foreground'
-                      : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/dashboard"
-                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
-                    pathname === '/dashboard'
-                      ? 'border-primary text-foreground'
-                      : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
-                  }`}
-                >
-                  Dashboard
-                </Link>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
+                      pathname === link.href
+                        ? 'border-blue-500 text-foreground'
+                        : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
+                    }`}
+                  >
+                    {link.icon}{link.label}
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
                 {isSignedIn ? (
                   <div className="flex items-center space-x-4">
-                    {/* ThemeToggle on desktop */}
                     <div className="hidden lg:block mr-4">
                       <CustomErrorBoundary>
                         <ThemeToggle />
@@ -82,7 +87,6 @@ export function Navbar() {
                   </div>
                 ) : (
                   <div className="flex items-center space-x-4">
-                    {/* ThemeToggle on desktop */}
                     <div className="hidden lg:block mr-4">
                       <CustomErrorBoundary>
                         <ThemeToggle />
@@ -90,15 +94,15 @@ export function Navbar() {
                     </div>
                     <Link
                       href="/sign-in"
-                      className="text-sm font-medium text-primary hover:text-primary/80 glass-shimmer"
+                      className="text-sm font-medium text-blue-600 hover:text-blue-500 glass-shimmer"
                     >
-                      Sign in
+                      התחברות
                     </Link>
                     <Link
                       href="/sign-up"
-                      className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-primary/90 glass-shimmer"
+                      className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 glass-shimmer"
                     >
-                      Sign up
+                      הרשמה
                     </Link>
                   </div>
                 )}
@@ -109,7 +113,7 @@ export function Navbar() {
                   </CustomErrorBoundary>
                   <button
                     type="button"
-                    className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                    className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
                     aria-expanded="false"
                     aria-label="toggle menu"
                     onClick={toggleMobileMenu}
@@ -130,26 +134,20 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div className="lg:hidden">
             <div className="pt-2 pb-3 space-y-1">
-              <Link
-                href="/"
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
-                  pathname === '/'
-                    ? 'bg-indigo-50 border-primary text-primary'
-                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-                }`}
-              >
-                Home
-              </Link>
-              <Link
-                href="/dashboard"
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
-                  pathname === '/dashboard'
-                    ? 'bg-indigo-50 border-primary text-primary'
-                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-                }`}
-              >
-                Dashboard
-              </Link>
+              {navLinks.map((link) => (
+                 <Link
+                  key={link.href + '-mobile'}
+                  href={link.href}
+                  className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                    pathname === link.href
+                      ? 'bg-sky-50 border-blue-500 text-blue-700'
+                      : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.icon}{link.label}
+                </Link>
+              ))}
             </div>
           </div>
         )}

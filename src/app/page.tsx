@@ -1,72 +1,69 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, Code, Shield, Users, Database, Palette } from 'lucide-react';
+import { ArrowRight, Search, BookOpen, Users, Database, Star, Lightbulb, Edit3 } from 'lucide-react';
 import clientPromise from "@/lib/mongodb";
 
 export default async function Home() {
-  let dbStatus = "Checking database connection...";
+  let dbStatus = "בודק חיבור למסד הנתונים...";
   let dbConnectionSuccessful = false;
 
   try {
     const client = await clientPromise;
-    // Perform a simple ping to confirm a successful connection
     await client.db().admin().ping();
-    dbStatus = "Successfully connected to MongoDB!";
+    dbStatus = "התחבר בהצלחה ל-MongoDB!";
     dbConnectionSuccessful = true;
     console.log("MongoDB connection successful via ping.");
   } catch (e) {
     console.error("MongoDB connection error:", e);
-    dbStatus = "Failed to connect to MongoDB. Check server logs and MONGODB_URI environment variable.";
-    // If e is an Error object, you might want to log e.message or e.stack
-    // For simplicity, logging the whole error object here.
+    dbStatus = "נכשל בהתחברות ל-MongoDB. בדוק את יומני השרת ואת משתנה הסביבה MONGODB_URI.";
   }
 
   return (
     <div className="flex flex-col items-center justify-center py-12">
       {/* Hero Section */}
       <section className="w-full max-w-5xl mx-auto text-center mb-16 animate-fadeIn">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-yellow-400 to-purple-600 bg-clip-text text-transparent">
-          Next.js Boilerplate by YUV.AI
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-yellow-400 to-blue-500 bg-clip-text text-transparent">
+          חולמים תקשוב: כלי AI למורים
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          A modern starter template with Next.js, MongoDB Atlas, Clerk Authentication, Tailwind CSS, and shadcn/ui
+          מאגר מתעדכן של כלי בינה מלאכותית, עם הסברים, דירוגים והדרכות שיעזרו לכם לשלב חדשנות בהוראה.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
+          <Button
             asChild
             size="lg"
-            className="bg-purple-600 hover:bg-purple-700 animate-slideInUp"
+            className="bg-blue-600 hover:bg-blue-700 animate-slideInUp"
             style={{ animationDelay: '0.1s' }}
           >
-            <Link href="/dashboard">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+            <Link href="/tools"> {/* Assuming /tools will be the main page for tools */}
+              גלה כלים <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             asChild
             size="lg"
-            className="animate-slideInUp"
+            className="animate-slideInUp border-blue-500 text-blue-600 hover:bg-blue-50"
             style={{ animationDelay: '0.2s' }}
           >
-            <Link href="/sign-up">Sign Up</Link>
+            <Link href="/sign-up">הרשמה</Link>
           </Button>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="w-full max-w-5xl mx-auto mb-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">מה תמצאו כאן?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div 
-              key={feature.title} 
+            <div
+              key={feature.title}
               className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 animate-fadeIn"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
               <div className="flex items-center mb-4">
-                <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
-                  <feature.icon className="h-6 w-6 text-purple-600 dark:text-purple-300" />
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <feature.icon className="h-6 w-6 text-blue-600 dark:text-blue-300" />
                 </div>
                 <h3 className="text-xl font-semibold">{feature.title}</h3>
               </div>
@@ -77,46 +74,51 @@ export default async function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="w-full max-w-5xl mx-auto text-center bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-10 text-white mb-16 animate-fadeIn">
-        <h2 className="text-3xl font-bold mb-4">Ready to Build Amazing Projects?</h2>
+      <section className="w-full max-w-5xl mx-auto text-center bg-gradient-to-r from-blue-600 to-sky-500 rounded-xl p-10 text-white mb-16 animate-fadeIn">
+        <h2 className="text-3xl font-bold mb-4">מוכנים לשדרג את ההוראה?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Start with this production-ready boilerplate and focus on building your features instead of setting up infrastructure.
+          התחילו לחקור את מאגר הכלים, הוסיפו משלכם, ושתפו את הקהילה בידע ובניסיון שלכם.
         </p>
-        <Button 
+        <Button
           asChild
-          size="lg" 
-          variant="outline" 
-          className="bg-white text-purple-600 hover:bg-gray-100"
+          size="lg"
+          variant="outline"
+          className="bg-white text-blue-600 hover:bg-gray-100"
         >
-          <Link href="/dashboard">
-            Start Building Now <ArrowRight className="ml-2 h-4 w-4" />
+          <Link href="/tools"> {/* Assuming /tools will be the main page for tools */}
+            התחילו לחקור <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </section>
 
       {/* Branding */}
       <section className="w-full max-w-3xl mx-auto text-center mb-8 animate-fadeIn">
-        <p className="text-xl font-semibold bg-gradient-to-r from-purple-600 via-yellow-400 to-purple-600 bg-clip-text text-transparent mb-2">
-          Fly High With YUV.AI
+        <p className="text-xl font-semibold bg-gradient-to-r from-blue-600 via-yellow-400 to-blue-500 bg-clip-text text-transparent mb-2">
+          חולמים תקשוב - פיתוח מאת חפציה בן ארצי
         </p>
         <p className="text-sm text-gray-500 dark:text-gray-400">
-          Find me on{' '}
-          <a href="https://twitter.com/yuvlav" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">Twitter</a>,{' '}
-          <a href="https://instagram.com/yuval_770" className="text-pink-500 hover:underline" target="_blank" rel="noopener noreferrer">Instagram</a>, or{' '}
-          <a href="https://linktr.ee/yuvai" className="text-green-500 hover:underline" target="_blank" rel="noopener noreferrer">Linktree</a>
+          ליצירת קשר:{' '}
+          <a href="mailto:chepti@gmail.com" className="text-blue-500 hover:underline">chepti@gmail.com</a>
+          <br />
+          בקרו באתר:{' '}
+          <a href="https://tikshuv.chepti.com/" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">tikshuv.chepti.com</a>
+          <br />
+          עקבו אחרינו:{' '}
+          <a href="https://linktr.ee/chepti" className="text-green-500 hover:underline" target="_blank" rel="noopener noreferrer">Linktree</a>,{' '}
+          <a href="https://www.youtube.com/@chepti1" className="text-red-500 hover:underline" target="_blank" rel="noopener noreferrer">YouTube</a>
         </p>
       </section>
 
       {/* Database Connection Status Message */}
       <div className="my-8 p-4 border rounded-lg">
-        <h2 className="text-xl font-semibold mb-2">Database Connection Test:</h2>
+        <h2 className="text-xl font-semibold mb-2">בדיקת חיבור למסד הנתונים:</h2>
         <p className={dbConnectionSuccessful ? "text-green-500" : "text-red-500"}>
           {dbStatus}
         </p>
         {!dbConnectionSuccessful && (
           <p className="text-sm text-gray-400 mt-2">
-            Please check the server console (your terminal) for more detailed error messages.
-            Ensure your MONGODB_URI in .env.local is correct and your IP is whitelisted in MongoDB Atlas.
+            אנא בדוק את מסוף השרת (הטרמינל שלך) לקבלת הודעות שגיאה מפורטות יותר.
+            ודא שמשתנה הסביבה MONGODB_URI בקובץ .env.local נכון ושה-IP שלך מאושר ב-MongoDB Atlas.
           </p>
         )}
       </div>
@@ -126,33 +128,33 @@ export default async function Home() {
 
 const features = [
   {
-    title: 'Next.js App Router',
-    description: 'Built on the latest Next.js version with App Router for improved routing and layouts.',
-    icon: Code,
+    title: 'מאגר כלי AI מגוון',
+    description: 'גישה למבחר כלי בינה מלאכותית המתאימים למורים, עם תיאורים והסברים מפורטים.',
+    icon: Search, // Changed icon
   },
   {
-    title: 'MongoDB Integration',
-    description: 'Seamless MongoDB Atlas integration with Mongoose for efficient data management.',
-    icon: Database,
+    title: 'הדרכות ודוגמאות שימוש',
+    description: 'מדריכים ידידותיים ודוגמאות מעשיות שיעזרו לכם להתחיל להשתמש בכלים השונים.',
+    icon: BookOpen, // Changed icon
   },
   {
-    title: 'Clerk Authentication',
-    description: 'Secure authentication with Clerk, including social logins and user management.',
-    icon: Users,
+    title: 'דירוג וסקירת כלים',
+    description: 'דרגו כלים ושתפו את דעתכם עם קהילת המורים. למדו מניסיונם של אחרים.',
+    icon: Star, // Changed icon
   },
   {
-    title: 'Beautiful UI',
-    description: 'Stylish UI with Tailwind CSS and shadcn/ui components for rapid development.',
-    icon: Palette,
+    title: 'סינון וחיפוש חכמים',
+    description: 'מצאו בקלות את הכלים המתאימים לכם לפי קטגוריות, מקצועות, או מיומנויות.',
+    icon: Lightbulb, // Changed icon
   },
   {
-    title: 'Security First',
-    description: 'OWASP Top 10 security compliance with built-in protection against common vulnerabilities.',
-    icon: Shield,
+    title: 'יצירת "מדפים" אישיים',
+    description: 'אספו וארגנו את כלי ה-AI האהובים עליכם באוספים אישיים ושתפו אותם.',
+    icon: Users, // Kept Users icon for "personal shelves"
   },
   {
-    title: 'Accessibility',
-    description: 'Fully accessible design with dark mode, high contrast mode, and font size adjustments.',
-    icon: Users,
+    title: 'קהילה ותרומת תוכן',
+    description: 'הציעו כלים חדשים, הוסיפו תוכן ושתפו מהידע שלכם עם קהילת המורים בישראל.',
+    icon: Edit3, // Changed icon
   },
 ];

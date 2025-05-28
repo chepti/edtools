@@ -1,32 +1,45 @@
-# YUV.AI Next.js Boilerplate
+# חולמים תקשוב: מאגר כלי AI למורים
 
-A modern Next.js boilerplate with Clerk authentication, Tailwind CSS, and shadcn/ui components.
+ברוכים הבאים למאגר כלי הבינה המלאכותית של "חולמים תקשוב", פרויקט שנוצר על ידי חפציה בן ארצי.
+פלטפורמה זו מיועדת למורים המעוניינים לגלות, להעריך ולשלב כלי AI בעבודתם החינוכית.
 
-![Boilerplate Homepage - Light](https://i.imgur.com/CnwTENH.png)
+## מטרת הפלטפורמה
 
-![Boilerplate Homepage - Dark](https://i.imgur.com/KoLCKZQ.png)
+בעידן שבו הבינה המלאכותית (AI) משנה תחומים רבים, החינוך אינו יוצא דופן. מטרת מאגר זה היא:
 
-![Boilerplate Dashboard - Light](https://i.imgur.com/W3p472n.png)
+*   **לרכז** מגוון רחב של כלי AI הרלוונטיים לעולם ההוראה והלמידה.
+*   **לספק מידע מקיף** על כל כלי, כולל תיאור, יתרונות, חסרונות, מגבלות ודירוגים מהקהילה.
+*   **להציע הדרכות ודוגמאות שימוש** שיקלו על מורים להתחיל לעבוד עם הכלים.
+*   **לאפשר למורים ליצור "מדפים" אישיים** - אוספים של כלים לפי נושאים, מטרות או העדפות אישיות.
+*   **לעודד קהילה של מורים** שמשתפים ידע, טיפים וניסיון בשימוש בכלי AI.
 
-## Features
+## תכונות מרכזיות (מתוכננות)
 
-- Next.js 14+ with App Router
-- Authentication with Clerk
-- UI Components with shadcn/ui
-- Styling with Tailwind CSS
-- Dark/Light mode toggle
-- Mobile-first responsive design
-- Accessible UI components
+*   **מאגר כלים מתעדכן:** גישה למגוון כלי AI עם תיאורים מפורטים.
+*   **סינון וחיפוש מתקדמים:** מצאו בקלות את הכלים המתאימים לצרכים שלכם.
+*   **דירוגים וסקירות משתמשים:** למדו מניסיונם של מורים אחרים.
+*   **הדרכות ודוגמאות מעשיות:** צעדים ראשונים ורעיונות לשימוש בכיתה.
+*   **"מדפים" אישיים:** ארגנו את הכלים האהובים עליכם באוספים אישיים.
+*   **גילוי כלים חדשים:** קבלו המלצות והצעות לכלים שעשויים לעניין אתכם.
 
-## Getting Started
+## טכנולוגיות
 
-1. Clone this repository
-2. Copy `.env.example` to `.env.local` and fill in your own values
-3. Install dependencies with `npm install`
-4. Run the development server with `npm run dev`
+הפלטפורמה מבוססת על התבנית המקורית של YUV.AI וכוללת:
 
-## Created By
+*   Next.js 14+ (App Router)
+*   MongoDB Atlas (עם Mongoose)
+*   Clerk לאימות משתמשים
+*   Tailwind CSS
+*   shadcn/ui לרכיבי ממשק משתמש
 
-Yuval Avidani, AI Builder & Speaker
+## יצירת קשר
 
-"Fly High With YUV.AI"
+חפציה בן ארצי
+*   אימייל: chepti@gmail.com
+*   אתר: [חולמים תקשוב](https://tikshuv.chepti.com/)
+*   לינקטריי: [chepti](https://linktr.ee/chepti)
+*   יוטיוב: [ערוץ היוטיוב של חפציה](https://www.youtube.com/@chepti1)
+
+---
+
+*הערה: ה-README עודכן כדי לשקף את פרויקט "חולמים תקשוב". התוכן הטכני מהתבנית המקורית נשמר ברובו.*
