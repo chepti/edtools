@@ -1,3 +1,6 @@
+console.log("Next.config.js MONGODB_URI:", process.env.MONGODB_URI);
+console.log("Next.config.js TEST_VARIABLE:", process.env.TEST_VARIABLE); // אם הוספת אותו בעבר לבדיקה
+
 /** @type {import('next').NextConfig} */
 
 const withBundleAnalyzer = process.env.ANALYZE === 'true'
