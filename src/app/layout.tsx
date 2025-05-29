@@ -26,9 +26,9 @@ export default function RootLayout({
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         </head>
-        <body className="outfit-app min-h-screen bg-background antialiased transition-colors">
+        <body className="font-rubik min-h-screen bg-background antialiased transition-colors">
           <AccessibilityProvider>
             <Navbar />
             <main className="min-h-[calc(100vh-4rem)] container mx-auto px-4">
