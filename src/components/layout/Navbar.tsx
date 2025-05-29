@@ -51,7 +51,7 @@ export function Navbar() {
             <div className="flex">
               <Link href="/" className="flex-shrink-0 flex items-center">
                 <Image 
-                  src="/LOGO.PNG" 
+                  src="/logo.png"
                   alt="חולמים תקשוב לוגו" 
                   width={40}
                   height={40}
