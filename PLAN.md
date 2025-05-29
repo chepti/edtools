@@ -118,9 +118,22 @@ This section tracks the customization of the YUV.AI boilerplate for Chepti Ben A
 - Initiated global font change from Outfit to Rubik (updated `tailwind.config.ts`, `globals.css`, and `layout.tsx` font links).
 
 ### Next Steps / Outstanding Issues:
-- **Resolve Double Footer Issue:** Investigate and remove the duplicate footer appearing on pages.
-- **Verify and Enforce Rubik Font:** Ensure the Rubik font is correctly applied sitoewide and that no previous font (Outfit) styles are overriding it.
-- **Verify and Refine RTL Display:** Thoroughly check and correct right-to-left display issues across the entire site, focusing on the homepage, Navbar, forms, and other key components. Ensure proper text alignment, element ordering, and icon mirroring where necessary.
+- **Resolve Double Footer Issue:** 
+  - Investigated and removed the duplicate footer appearing on pages. 
+  - **Status: Believed to be resolved** by deleting `src/components/layout/Footer.tsx`. Awaiting user confirmation after deployment.
+- **Verify and Enforce Rubik Font:** 
+  - Ensured the Rubik font is correctly applied sitewide. 
+  - Made corrections in `src/app/layout.tsx` (font link and body class), `tailwind.config.ts` (default sans font), and `src/app/globals.css` (CSS variable and body font-family).
+  - **Status: Believed to be resolved.** Awaiting user confirmation after deployment.
+- **Verify and Refine RTL Display:** 
+  - Thoroughly check and correct right-to-left display issues across the entire site.
+  - Added global `dir="rtl"`.
+  - Added `rtl-mirror` CSS utility to flip relevant icons (e.g., `ArrowRight` in `src/app/page.tsx`).
+  - **Status: Significantly improved.** Awaiting user confirmation for any remaining specific issues after deployment.
+- **Fix Logo Loading on Vercel:**
+  - Addressed potential case-sensitivity issue by changing logo `src` in `Navbar.tsx` from `/LOGO.PNG` to `/logo.png`.
+  - User to ensure `public/logo.png` (lowercase) exists and is pushed to Git.
+  - **Status: Believed to be resolved.** Awaiting user confirmation after deployment.
 - **UI/UX Refinements:** Address any remaining visual inconsistencies or areas needing design adjustments for a polished look and feel.
 - **(Future) Core Functionality Development:** 
   - Implement features for the AI tools database (e.g., tool submission, categorization, search, filtering, user shelves).
