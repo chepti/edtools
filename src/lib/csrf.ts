@@ -34,7 +34,7 @@ export async function validateCSRFToken(token: string): Promise<boolean> {
 // Client-side functions to work with CSRF tokens
 export const clientCSRF = {
   getCSRFFromMeta: (): string | null => {
-    if (typeof document === 'undefined') return null;
+    if (typeof document === 'undefined') return null; 
     const csrfMeta = document.querySelector('meta[name="csrf-token"]');
     return csrfMeta ? csrfMeta.getAttribute('content') : null;
   },

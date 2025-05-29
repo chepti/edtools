@@ -116,6 +116,9 @@ This section tracks the customization of the YUV.AI boilerplate for Chepti Ben A
 - Set global `dir="rtl"` in `src/app/layout.tsx` for right-to-left language support.
 - Updated global metadata (`title`, `description`, `keywords`, `author`, `creator`) in `src/app/layout.tsx`.
 - Initiated global font change from Outfit to Rubik (updated `tailwind.config.ts`, `globals.css`, and `layout.tsx` font links).
+- Successfully connected to MongoDB Atlas after resolving `.env.local` loading issues.
+- Deployed the application to Vercel, addressing various build errors (import issues, ESLint violations, TypeScript errors in `csrf.ts`).
+- Confirmed successful Vercel deployment and database connectivity.
 
 ### Next Steps / Outstanding Issues:
 - **Resolve Double Footer Issue:** 
@@ -135,6 +138,9 @@ This section tracks the customization of the YUV.AI boilerplate for Chepti Ben A
   - User to ensure `public/logo.png` (lowercase) exists and is pushed to Git.
   - **Status: Believed to be resolved.** Awaiting user confirmation after deployment.
 - **UI/UX Refinements:** Address any remaining visual inconsistencies or areas needing design adjustments for a polished look and feel.
+- **(Next Session) Core Functionality Development - Database Schema and API:**
+  - Define Mongoose schemas for AI tools, categories, user shelves, etc.
+  - Develop API routes for CRUD operations on these models.
 - **(Future) Core Functionality Development:** 
   - Implement features for the AI tools database (e.g., tool submission, categorization, search, filtering, user shelves).
   - Design and develop UI for tool display and interaction.

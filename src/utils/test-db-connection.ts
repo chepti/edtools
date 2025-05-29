@@ -8,11 +8,11 @@ export async function testMongoDbConnection(): Promise<{ success: boolean; messa
   try {
     const client = await clientPromise;
     await client.db().admin().ping();
-
-    return {
-      success: true,
+    
+      return {
+        success: true,
       message: 'Successfully connected to MongoDB (via client.db().admin().ping())',
-      details: {
+        details: {
         host: client.options.srvHost,
       }
     };

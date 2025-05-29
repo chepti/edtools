@@ -29,7 +29,7 @@ export default async function Home() {
           מאגר מתעדכן של כלי בינה מלאכותית, עם הסברים, דירוגים והדרכות שיעזרו לכם לשלב חדשנות בהוראה.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
+          <Button 
             asChild
             size="lg"
             className="bg-blue-600 hover:bg-blue-700 animate-slideInUp"
@@ -39,8 +39,8 @@ export default async function Home() {
               גלה כלים <ArrowRight className="ml-2 h-4 w-4 rtl-mirror" />
             </Link>
           </Button>
-          <Button
-            variant="outline"
+          <Button 
+            variant="outline" 
             asChild
             size="lg"
             className="animate-slideInUp border-blue-500 text-blue-600 hover:bg-blue-50"
@@ -56,8 +56,8 @@ export default async function Home() {
         <h2 className="text-3xl font-bold text-center mb-12">מה תמצאו כאן?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
-              key={feature.title}
+            <div 
+              key={feature.title} 
               className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-100 dark:border-gray-700 transform transition-all duration-300 hover:scale-105 animate-fadeIn"
               style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
@@ -79,10 +79,10 @@ export default async function Home() {
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           התחילו לחקור את מאגר הכלים, הוסיפו משלכם, ושתפו את הקהילה בידע ובניסיון שלכם.
         </p>
-        <Button
+        <Button 
           asChild
-          size="lg"
-          variant="outline"
+          size="lg" 
+          variant="outline" 
           className="bg-white text-blue-600 hover:bg-gray-100"
         >
           <Link href="/tools"> {/* Assuming /tools will be the main page for tools */}
