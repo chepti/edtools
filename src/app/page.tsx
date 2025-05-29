@@ -36,7 +36,7 @@ export default async function Home() {
             style={{ animationDelay: '0.1s' }}
           >
             <Link href="/tools"> {/* Assuming /tools will be the main page for tools */}
-              גלה כלים <ArrowRight className="ml-2 h-4 w-4" />
+              גלה כלים <ArrowRight className="ml-2 h-4 w-4 rtl-mirror" />
             </Link>
           </Button>
           <Button
@@ -86,7 +86,7 @@ export default async function Home() {
           className="bg-white text-blue-600 hover:bg-gray-100"
         >
           <Link href="/tools"> {/* Assuming /tools will be the main page for tools */}
-            התחילו לחקור <ArrowRight className="ml-2 h-4 w-4" />
+            התחילו לחקור <ArrowRight className="ml-2 h-4 w-4 rtl-mirror" />
           </Link>
         </Button>
       </section>

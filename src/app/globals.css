@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Outfit", sans-serif;
+  --font-sans: "Rubik", sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -118,157 +118,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Outfit", sans-serif;
+    font-family: var(--font-sans);
     position: relative;
     overflow-x: hidden;
   }
-}
-
-/* Outfit Font Classes with variable weights */
-.outfit-app {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Generic utility class for Outfit with variable weight */
-.outfit-custom {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-
-.outfit-thin {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.outfit-extralight {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.outfit-light {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.outfit-regular {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.outfit-medium {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.outfit-semibold {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.outfit-bold {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.outfit-extrabold {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.outfit-black {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-}
-
-/* Animation for the Phoenix logo */
-.animate-phoenix-fly {
-  animation: phoenix-fly 6s ease-in-out infinite;
-}
-
-/* Outfit classes with the format specified in the user request */
-.outfit-100 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.outfit-200 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.outfit-300 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.outfit-400 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.outfit-500 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.outfit-600 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.outfit-700 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.outfit-800 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.outfit-900 {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
 }
 
 @keyframes phoenix-fly {
@@ -394,78 +247,65 @@
 .glass-blur-gradient {
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .glass-blur-gradient::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(124, 58, 237, 0.5) 0%,
-    rgba(124, 58, 237, 0.2) 30%,
-    rgba(251, 191, 36, 0.2) 60%,
-    rgba(251, 191, 36, 0) 70%
-  );
+  inset: 0;
+  background: inherit;
+  background-attachment: fixed;
+  filter: blur(10px);
   z-index: -1;
-  opacity: 0.7;
-  filter: blur(40px);
-  transform-origin: center;
-  animation: glass-gradient-float 15s ease-in-out infinite, glass-gradient-pulse 10s ease-in-out infinite;
+  margin: -20px;
 }
 
 .glass-shimmer {
   position: relative;
   overflow: hidden;
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease-in-out;
 }
 
 .glass-shimmer::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 25%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0.2) 75%,
-    rgba(255, 255, 255, 0) 100%
+    110deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 60%
   );
-  background-size: 200% 100%;
-  background-repeat: no-repeat;
-  background-position: -100% 0;
-  animation: glass-shimmer 6s infinite;
-  pointer-events: none;
+  animation: glass-shimmer 3s infinite linear;
+  transform: translateX(-100%);
 }
 
 .dark .glass-shimmer::after {
   background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 25%, 
+    110deg,
+    rgba(255, 255, 255, 0) 40%,
     rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 75%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0) 60%
   );
 }
 
-/* Fix for dark mode button text */
-.dark button.bg-primary,
-.dark .button.bg-primary,
-.dark button.btn-primary,
-.dark .button.btn-primary,
-.dark [class*='bg-primary'] {
-  color: white;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+button, a, input[type="button"], input[type="submit"] {
+  position: relative;
+  z-index: 1;
 }
 
-/* Animated banner style */
+.dark button.bg-primary,
+.dark a.bg-primary {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
 @keyframes banner-gradient-slide {
   0% {
     background-position: 0% 50%;
@@ -479,34 +319,30 @@
 }
 
 .animated-banner {
-  background: linear-gradient(90deg, rgba(124, 58, 237, 0.9), rgba(251, 191, 36, 0.9), rgba(124, 58, 237, 0.9));
-  background-size: 200% 100%;
-  animation: banner-gradient-slide 8s infinite;
-  backdrop-filter: blur(8px);
-  padding: 0.5rem 0;
+  background: linear-gradient(270deg, theme('colors.blue.500'), theme('colors.sky.400'), theme('colors.yellow.300'), theme('colors.sky.400'), theme('colors.blue.500'));
+  background-size: 400% 400%;
+  animation: banner-gradient-slide 15s ease infinite;
 }
 
 .dark .animated-banner {
-  background: linear-gradient(90deg, rgba(124, 58, 237, 0.6), rgba(251, 191, 36, 0.5), rgba(124, 58, 237, 0.6));
-  background-size: 200% 100%;
-  animation: banner-gradient-slide 8s infinite;
-  backdrop-filter: blur(8px);
+  background: linear-gradient(270deg, theme('colors.blue.700'), theme('colors.sky.600'), theme('colors.yellow.500'), theme('colors.sky.600'), theme('colors.blue.700'));
+  background-size: 400% 400%;
+  animation: banner-gradient-slide 15s ease infinite;
 }
 
 .glass-headline {
-  position: relative;
+  color: hsl(var(--foreground));
+  text-shadow: 0px 1px 2px hsla(var(--foreground), 0.2);
+  padding: 0.1em 0;
   display: inline-block;
-  background: linear-gradient(120deg, #7c3aed, #fbbf24);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 3px rgba(124, 58, 237, 0.3));
 }
 
 .dark .glass-headline {
-  background: linear-gradient(120deg, #a78bfa, #fde68a);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.6));
+  color: hsl(var(--foreground));
+  text-shadow: 0px 1px 3px hsla(var(--foreground), 0.3);
+}
+
+/* CHEPTI: Utility for RTL icon mirroring */
+[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
 }
