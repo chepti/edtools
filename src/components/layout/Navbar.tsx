@@ -29,6 +29,7 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "דף הבית" },
     { href: "/tools", label: "מאגר הכלים", icon: <BookOpen className="mr-1 h-4 w-4 inline-block" /> },
+    { href: "/dashboard/tools/add", label: "הוספת כלי", icon: <Sparkles className="mr-1 h-4 w-4 inline-block" /> },
     { href: "/dashboard", label: "אזור אישי" },
   ];
 
@@ -60,17 +61,17 @@ export function Navbar() {
               </Link>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                 {navLinks.map((link) => (
-                <Link
+                  <Link
                     key={link.href}
                     href={link.href}
-                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
+                    className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium glass-shimmer ${
                       pathname === link.href
                         ? 'border-blue-500 text-foreground'
-                      : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
-                  }`}
-                >
+                        : 'border-transparent text-muted-foreground hover:text-foreground hover:border-gray-300'
+                    }`}
+                  >
                     {link.icon}{link.label}
-                </Link>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -135,18 +136,18 @@ export function Navbar() {
           <div className="lg:hidden">
             <div className="pt-2 pb-3 space-y-1">
               {navLinks.map((link) => (
-              <Link
+                 <Link
                   key={link.href + '-mobile'}
                   href={link.href}
-                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                  className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
                     pathname === link.href
                       ? 'bg-sky-50 border-blue-500 text-blue-700'
-                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
-                }`}
+                      : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800'
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
-              >
+                >
                   {link.icon}{link.label}
-              </Link>
+                </Link>
               ))}
             </div>
           </div>
